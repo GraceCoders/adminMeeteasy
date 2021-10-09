@@ -1,0 +1,66 @@
+<div id="top"></div>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header headerFlex" style="background-color: black;color:white">
+          <h4 class="card-title"> Edit Catagory</h4>
+        </div>
+        <div class="card-body">
+          <div class="row" [formGroup]="catagoryForm">
+            <div class="col-md-6 col-lg-4">
+              <label>
+                Name :
+              </label>
+              <input type="text" class="form-control" formControlName="name">
+              <div *ngIf="submitted && c.name.errors">
+                <span [ngClass]="c.name.errors ? 'text-danger' : ''">Name is required.</span>
+              </div>
+
+            </div>
+
+            <div class="col-md-6 col-lg-8"></div>
+
+            <div class="col-md-6 col-lg-4">
+              <label>
+                Category Icon :
+              </label>
+              <div class="icon" *ngIf="urls_coverPhoto.length == 0">
+                
+                <img class="img-fluid" style="height: 4em;" [src]="catagoryForm.value.image" class="form-control"  alt="Cover">
+              </div>
+              <div class="icon" *ngIf="urls_coverPhoto.length != 0">
+                
+                <img class="img-fluid" style="height: 4em;"  *ngFor="let url_coverPhoto of urls_coverPhoto" [src]="url_coverPhoto" class="form-control"  alt="Cover">
+              </div>
+              <div class="changeBrowseBtn">
+              <input type="file" id="image" name="image" (change)="fileUploadCoverPhoto($event)" class="form-control">
+              <span>Upload Icon</span>
+              </div>
+              <div *ngIf="submitted && c.image.errors">
+                <span [ngClass]="c.image.errors ? 'text-danger' : ''">Store Image is required.</span>
+              </div>
+            </div>
+           
+
+          </div>
+          <div class="text-center control-buttons">
+            <div class="text-danger" *ngIf="message != ''">{{message}}</div>
+              <input type="button" class="btn btn-primary" value='Update' (click)="UpdateCatagory()">
+              <input type="button" class="btn btn-warning" value='Cancel' (click)="Cancel()">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>

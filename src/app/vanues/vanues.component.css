@@ -1,0 +1,40 @@
+
+body{
+    background: white;
+font-family: 'Raleway', sans-serif;
+font-size: larger;
+min-height:100vh;
+}
+
+.main-section{
+    width:90%;
+    margin:0 auto;
+    text-align: center;
+    padding: 0px 5px;
+    }
+    .dashbord{
+    width:23%;
+    display: block;
+    background-color:rgb(9, 197, 119);
+    color:#ffffff;
+    margin-top: 50px; 
+    border-radius:12%;
+    cursor: pointer;
+    }
+    
+    .icon-section{
+        display: block;
+        padding-top:2em;
+        padding-bottom:1em;
+        background-color:black;
+        border-radius:12%;
+    }
+
+    .count{
+        font-size: 65px;
+        font-weight: 900;
+    }
+    .title{
+        font-weight:bolder;
+        font-size:30px;
+    }

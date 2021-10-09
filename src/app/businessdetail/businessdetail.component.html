@@ -1,0 +1,257 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Contact Detail</h4>   
+          <span class="sn-right control-buttons">
+            <!-- <button  class="btn" (click)="UpdateUserStatus()" [ngClass]="{'btn-danger': businessDetailForm.value.isBlocked == true, 'btn-success' : businessDetailForm.value.isBlocked == false }">{{ businessDetailForm.value.isBlocked? 'Unblock' : 'Block' }}</button> -->
+            <button class="btn" [ngClass]="{'btn-success' : !status,'btn-danger' : status}" (click)="UpdateBusinessStatus()">{{status ? 'Reject' : 'Approve'}}</button>
+          </span>       
+        </div>
+        <div class="card-body bodyFormDesign">
+
+          <form [formGroup]="contactDetailForm">
+            <div class="row">
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>User name</label>
+                  <input type="text" formControlName="name" class="form-control"
+                   />
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="text" formControlName="email" class="form-control"
+                   />
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Mobile Number</label>
+                  <input type="text" formControlName="mobileNumber" class="form-control"
+                    />
+                  
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Created At</label>
+                  <input type="text" formControlName="createdAt" class="form-control"
+                    />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Business Detail</h4>
+          
+          
+        </div>
+        <div class="card-body bodyFormDesign">
+
+          <form>
+           
+            <div class="row">
+              <div class="col-md-3">
+                <img src="assets/img/login-bgr.jpg">
+              </div>
+              <div class="col-md-3">
+                <img src="assets/img/login-bgr.jpg">
+              </div>
+              <div class="col-md-3">
+                <img src="assets/img/login-bgr.jpg">
+              </div>
+              <div class="col-md-3">
+                <img src="assets/img/login-bgr.jpg">
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Business name</label>
+                  <div class="form-control">Meeteasy</div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Business Location</label>
+                  <div class="form-control">USA</div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Business Name(instagram)</label>
+                  <div class="form-control">Meeteasy</div>
+                  
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Web Link</label>
+                  <div class="form-control">http://localhost:4200</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Menu Link</label>
+                  <div class="form-control">http://localhost:4200/home</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Venue Detail</h4>
+          
+          
+        </div>
+        <div class="card-body bodyFormDesign">
+
+          <form>
+           
+            
+            <div class="row">
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Capacity</label>
+                  <div class="form-control">20</div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Cuisine Type</label>
+                  <div class="form-control">Indian</div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Price per head</label>
+                  <div class="form-control">50</div>
+                  
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Vibe</label>
+                  <div class="form-control">data</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Features</label>
+                  <div class="form-control">feature 1</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Offer Details</h4>
+          
+          
+        </div>
+        <div class="card-body bodyFormDesign">
+
+          <form>
+           
+            
+            <div class="row">
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Automatic Offer</label>
+                  <div class="form-control">Yes</div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Days</label>
+                  <div>
+                    <div class="day">S</div>
+                    <div class="day">M</div>
+                    <div class="day">T</div>
+                    <div class="day day-selected">W</div>
+                    <div class="day">T</div>
+                    <div class="day day-selected">F</div>
+                    <div class="day">S</div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>From</label>
+                  <div class="form-control">50</div>
+                  
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>To</label>
+                  <div class="form-control">data</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Discount Offered</label>
+                  <div class="form-control">5 %</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Description</label>
+                  <div class="form-control"> The offer available here.</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+</div>

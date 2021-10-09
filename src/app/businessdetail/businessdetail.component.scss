@@ -1,0 +1,14 @@
+.day{
+    border: 1px solid grey;
+    display: inline-block;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 0.5em;
+    margin: 0.5em;
+    background-color: white;
+    text-align: center;
+}
+.day-selected{
+    background-color:rgb(58, 145, 245);
+}

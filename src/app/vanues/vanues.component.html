@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="main-section deshboardPage">
+    <div class="row">
+
+      <div class="dashbord" (click)="openCapacity()">
+        <div class="icon-section">
+          <div class="count"><b>{{CapacityList?.length > 0 ? CapacityList.length : 0}}</b></div>
+          <div class="title">Capacity</div>
+        </div>
+
+      </div>&nbsp; &nbsp; &nbsp;
+      <div class="dashbord" (click)="openCuisine()">
+        <div class="icon-section">
+          <div class="count"><b>{{CuisineList?.length > 0 ? CuisineList.length : 0}}</b></div>
+          <div class="title">Couisine Type</div>
+        </div>
+
+      </div>&nbsp; &nbsp; &nbsp;
+      <div class="dashbord" (click)="openPricePerHead()">
+        <div class="icon-section">
+          <div class="count"><b>{{PricePerOrderList?.length > 0 ? PricePerOrderList.length : 0}}</b></div>
+          <div class="title">Price Per Head</div>
+        </div>
+
+      </div>&nbsp; &nbsp; &nbsp;
+      <div class="dashbord" (click)="openFeature()">
+        <div class="icon-section">
+          <div class="count"><b>{{FeaturesList?.length > 0 ? FeaturesList.length : 0}}</b></div>
+          <div class="title">Features</div>
+        </div>
+      </div>
+
+      <div class="dashbord" (click)="openVibe()">
+        <div class="icon-section">
+          <div class="count"><b>{{VibeList?.length > 0 ? VibeList.length : 0}}</b></div>
+          <div class="title">Vibe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
