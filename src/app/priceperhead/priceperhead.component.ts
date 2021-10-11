@@ -11,29 +11,29 @@ import { AppService } from '../app.service';
 })
 export class PriceperheadComponent implements OnInit {
 
-  capacity = [];
-  capacityData:any;
+  pricePerHead = [];
+  pricePerHeadData: any;
   size = '';
   pagination = false;
-  capacityForm:FormGroup;
+  pricePerHeadForm: FormGroup;
   total = 0;
-  errMssage:any;
-  msg:any;
-   data = {
-     page : 1,
-     limit: '',
-     text: '',
-     filter: ''
-   }
-   where = {
-     filter: '',
-     limit: 10,
-     page: 1,
-     order: -1
-   }
-   submitted:boolean = false;
+  errMssage: any;
+  msg: any;
+  data = {
+    page: 1,
+    limit: '',
+    text: '',
+    filter: ''
+  }
+  where = {
+    filter: '',
+    limit: 10,
+    page: 1,
+    order: -1
+  }
+  submitted: boolean = false;
 
-  constructor(private router: Router, private userService: AppService,private spinner: NgxSpinnerService,public fb:FormBuilder) { }
+  constructor(private router: Router, private userService: AppService, private spinner: NgxSpinnerService, public fb: FormBuilder) { }
 
   ngAfterViewInit() {
     // Hack: Scrolls to top of Page after page view initialized
@@ -44,80 +44,83 @@ export class PriceperheadComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.capacityForm = this.fb.group({
-      name:['',[Validators.required]],
-      type:['pricePerHead']
+    this.pricePerHeadForm = this.fb.group({
+      name: ['', [Validators.required]],
+      type: ['pricePerHead']
     });
 
     this.getVanues(this.data);
   }
 
 
-  getVanues(data){
+  getVanues(data) {
     this.spinner.show();
-    this.userService.getVanueList(data).subscribe((data)=>{
+    this.userService.getVanueList(data).subscribe((data) => {
       debugger
-      if(data.statusCode == 200){
-        this.capacityData = data.data;
-        this.capacityData.basicId = data.data._id;
+      if (data.statusCode == 200) {
+        this.pricePerHeadData = data.data;
+        this.pricePerHeadData.basicId = data.data._id;
       }
       this.spinner.hide();
     },
-    (err)=>{
-      console.log(err);
-      this.spinner.hide();
-    })
+      (err) => {
+        console.log(err);
+        this.spinner.hide();
+      })
   }
 
   loadPage(page: number) {
     this.data.page = page;
-   }
+  }
 
-   search(event){
-     this.data.filter = event.target.value;
-   }
+  search(event) {
+    this.data.filter = event.target.value;
+  }
 
-   EditCapacity(item,i){
-     this.capacityForm.controls["name"].setValue(item.name);
-     this.capacityData.pricePerHead.splice(i,1);
-    document.getElementById('id01').style.display='block';
-   }
+  EditPricePerHead(item, i) {
+    this.pricePerHeadForm.controls["name"].setValue(item.name);
+    this.pricePerHeadData.pricePerHead.splice(i, 1);
+    document.getElementById('id01').style.display = 'block';
+  }
 
-   DeleteCapacity(i){
-    this.capacityData.pricePerHead.splice(i,1);
-    this.AddVanue(this.capacityData);
-   }
+  DeletePricePerHead(i) {
+    var consent = confirm("Do you want to delete this record ?");
+    if (consent) {
+      this.pricePerHeadData.pricePerHead.splice(i, 1);
+      this.AddVanue(this.pricePerHeadData);
+    }
+  }
 
-   AddCapacity(){
-     this.submitted = true;
-     if(this.capacityForm.valid){
-       this.capacityData.pricePerHead.push(this.capacityForm.value);
-       debugger
-        this.AddVanue(this.capacityData);
-     }
-   };
+  AddPricePerHead() {
+    this.submitted = true;
+    if (this.pricePerHeadForm.valid) {
+      this.pricePerHeadData.pricePerHead.push(this.pricePerHeadForm.value);
+      debugger
+      this.AddVanue(this.pricePerHeadData);
+    }
+  };
 
-   AddVanue(data){
-    this.userService.addVanue(data).subscribe((data)=>{
+  AddVanue(data) {
+    this.userService.addVanue(data).subscribe((data) => {
       debugger;
-      console.log("=== resposnse of daat data====",data)
-      if(data.statusCode == 200){
-        document.getElementById('id01').style.display='none';
-        this.capacityForm.reset();
-        this.capacityForm.controls["type"].setValue("pricePerHead");
+      console.log("=== resposnse of daat data====", data)
+      if (data.statusCode == 200) {
+        document.getElementById('id01').style.display = 'none';
+        this.pricePerHeadForm.reset();
+        this.pricePerHeadForm.controls["type"].setValue("pricePerHead");
         window.location.reload();
       }
-      if(data.statusCode == 400){
+      if (data.statusCode == 400) {
         this.errMssage = true;
         this.msg = data.message;
       }
       this.spinner.hide();
 
     },
-    (err)=>{
-      console.log(err);
-      this.spinner.hide();
-    })
-   }
+      (err) => {
+        console.log(err);
+        this.spinner.hide();
+      })
+  }
 
 }

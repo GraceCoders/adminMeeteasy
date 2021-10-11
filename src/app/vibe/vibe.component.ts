@@ -11,11 +11,11 @@ import { AppService } from '../app.service';
 })
 export class VibeComponent implements OnInit {
 
-  capacity = [];
-  capacityData:any;
+  vibe = [];
+  vibeData:any;
   size = '';
   pagination = false;
-  capacityForm:FormGroup;
+  vibeForm:FormGroup;
   total = 0;
   errMssage:any;
   msg:any;
@@ -44,7 +44,7 @@ export class VibeComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.capacityForm = this.fb.group({
+    this.vibeForm = this.fb.group({
       name:['',[Validators.required]],
       type:['vibe']
     });
@@ -58,8 +58,8 @@ export class VibeComponent implements OnInit {
     this.userService.getVanueList(data).subscribe((data)=>{
       debugger
       if(data.statusCode == 200){
-        this.capacityData = data.data;
-        this.capacityData.basicId = data.data._id;
+        this.vibeData = data.data;
+        this.vibeData.basicId = data.data._id;
       }
       this.spinner.hide();
     },
@@ -77,23 +77,26 @@ export class VibeComponent implements OnInit {
      this.data.filter = event.target.value;
    }
 
-   EditCapacity(item,i){
-     this.capacityForm.controls["name"].setValue(item.name);
-     this.capacityData.vibe.splice(i,1);
+   EditVibe(item,i){
+     this.vibeForm.controls["name"].setValue(item.name);
+     this.vibeData.vibe.splice(i,1);
     document.getElementById('id01').style.display='block';
    }
 
-   DeleteCapacity(i){
-    this.capacityData.vibe.splice(i,1);
-    this.AddVanue(this.capacityData);
-   }
+  DeleteVibe(i) {
+    var consent = confirm("Do you want to delete this record ?");
+    if (consent) {
+      this.vibeData.vibe.splice(i, 1);
+      this.AddVanue(this.vibeData);
+    }
+  }
 
-   AddCapacity(){
+   AddVibe(){
      this.submitted = true;
-     if(this.capacityForm.valid){
-       this.capacityData.vibe.push(this.capacityForm.value);
+     if(this.vibeForm.valid){
+       this.vibeData.vibe.push(this.vibeForm.value);
        debugger
-        this.AddVanue(this.capacityData);
+        this.AddVanue(this.vibeData);
      }
    };
 
@@ -103,8 +106,8 @@ export class VibeComponent implements OnInit {
       console.log("=== resposnse of daat data====",data)
       if(data.statusCode == 200){
         document.getElementById('id01').style.display='none';
-        this.capacityForm.reset();
-        this.capacityForm.controls["type"].setValue("vibe");
+        this.vibeForm.reset();
+        this.vibeForm.controls["type"].setValue("vibe");
         window.location.reload();
       }
       if(data.statusCode == 400){

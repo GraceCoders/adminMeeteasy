@@ -83,10 +83,13 @@ export class CapacityComponent implements OnInit {
     document.getElementById('id01').style.display='block';
    }
 
-   DeleteCapacity(i){
-    this.capacityData.capacity.splice(i,1);
-    this.AddVanue(this.capacityData);
-   }
+  DeleteCapacity(i) {
+    var consent = confirm("Do you want to delete this record ?");
+    if (consent) {
+      this.capacityData.capacity.splice(i, 1);
+      this.AddVanue(this.capacityData);
+    }
+  }
 
    AddCapacity(){
      this.submitted = true;

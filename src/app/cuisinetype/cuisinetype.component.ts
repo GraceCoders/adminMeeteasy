@@ -11,11 +11,11 @@ import { AppService } from '../app.service';
 })
 export class CuisinetypeComponent implements OnInit {
 
-  capacity = [];
-  capacityData:any;
+  cuisine = [];
+  cuisineData:any;
   size = '';
   pagination = false;
-  capacityForm:FormGroup;
+  cuisineForm:FormGroup;
   total = 0;
   errMssage:any;
   msg:any;
@@ -44,7 +44,7 @@ export class CuisinetypeComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.capacityForm = this.fb.group({
+    this.cuisineForm = this.fb.group({
       name:['',[Validators.required]],
       type:['cuisine']
     });
@@ -58,8 +58,8 @@ export class CuisinetypeComponent implements OnInit {
     this.userService.getVanueList(data).subscribe((data)=>{
       debugger
       if(data.statusCode == 200){
-        this.capacityData = data.data;
-        this.capacityData.basicId = data.data._id;
+        this.cuisineData = data.data;
+        this.cuisineData.basicId = data.data._id;
       }
       this.spinner.hide();
     },
@@ -77,23 +77,26 @@ export class CuisinetypeComponent implements OnInit {
      this.data.filter = event.target.value;
    }
 
-   EditCapacity(item,i){
-     this.capacityForm.controls["name"].setValue(item.name);
-     this.capacityData.cuisine.splice(i,1);
+   EditCuisine(item,i){
+     this.cuisineForm.controls["name"].setValue(item.name);
+     this.cuisineData.cuisine.splice(i,1);
     document.getElementById('id01').style.display='block';
    }
 
-   DeleteCapacity(i){
-    this.capacityData.cuisine.splice(i,1);
-    this.AddVanue(this.capacityData);
+   DeleteCuisine(i){
+    var consent = confirm("Do you want to delete this record ?");
+    if (consent) {
+      this.cuisineData.cuisine.splice(i,1);
+      this.AddVanue(this.cuisineData);
+    }
    }
 
-   AddCapacity(){
+   AddCuisineType(){
      this.submitted = true;
-     if(this.capacityForm.valid){
-       this.capacityData.cuisine.push(this.capacityForm.value);
+     if(this.cuisineForm.valid){
+       this.cuisineData.cuisine.push(this.cuisineForm.value);
        debugger
-        this.AddVanue(this.capacityData);
+        this.AddVanue(this.cuisineData);
      }
    };
 
@@ -103,8 +106,8 @@ export class CuisinetypeComponent implements OnInit {
       console.log("=== resposnse of daat data====",data)
       if(data.statusCode == 200){
         document.getElementById('id01').style.display='none';
-        this.capacityForm.reset();
-        this.capacityForm.controls["type"].setValue("cuisine");
+        this.cuisineForm.reset();
+        this.cuisineForm.controls["type"].setValue("cuisine");
         window.location.reload();
       }
       if(data.statusCode == 400){
